@@ -17,7 +17,7 @@ $interrogazione = sprintf(
   mysql_real_escape_string($password)
 );
 
-$Risultato = mysql_query($interrogazione);
+$Risultato = mysql_query($interrogazione, $connect);
 
 $privilegi = mysql_result ($Risultato, $NumeroRighe, "Privilegi");
 $NumeroRighe = mysql_num_rows($Risultato);
