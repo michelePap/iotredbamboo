@@ -50,14 +50,8 @@
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-						<?php
-                        /*
-                            Saluto utente dropdown list
-                        */
-                        $hello = '<li><a><i class="fa fa-user fa-fw">
-                        </i> Ciao, Admin ! </a>';
-                        echo hello;
-						?>
+						<li>
+                            <a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
