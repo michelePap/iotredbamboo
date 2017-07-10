@@ -5,7 +5,7 @@
 	
 	$pos = strpos ("$sensoreget",'_');
 	  
-	$IdSensore = substr($sensoreget,0,$pos);
+	$IdSensore = substr($sensoreget,0, (string)$pos);
 	
 	mysql_select_db("$db_name",$connect);
 

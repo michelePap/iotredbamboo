@@ -3,13 +3,9 @@
 
 	$ambienteget = $_POST['IdAmbiente'];
 	
-	$pos = '';
-
 	$pos = strpos ("$ambienteget","_");
 	  
-	$IdAmbiente = '';
-
-	$IdAmbiente = substr($ambienteget,0,$pos);
+	$IdAmbiente = substr($ambienteget,0, (string)$pos);
 	
 	mysql_select_db("$db_name",$connect);
 
