@@ -9,7 +9,13 @@ $_SESSION['username'] = $username;
 
 mysql_select_db("$db_name",$connect);
 
-$interrogazione = "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'";
+//$interrogazione = "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'";
+
+$interrogazione = sprintf(
+  "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'",
+  mysql_real_escape_string($username),
+  mysql_real_escape_string($password)
+);
 
 $Risultato = mysql_query($interrogazione);
 
