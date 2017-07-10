@@ -54,8 +54,8 @@
                         /*
                             Saluto utente dropdown list
                         */
-                        $hello = <<<HTML <li><a><i class="fa fa-user fa-fw"></i
-                        > Ciao, Admin ! </a> HTML;
+                        $hello = '<li><a><i class="fa fa-user fa-fw">
+                        </i> Ciao, Admin ! </a>';
                         echo hello;
 						?>
                         </li>
