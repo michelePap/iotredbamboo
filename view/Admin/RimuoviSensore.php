@@ -49,9 +49,8 @@
 									<i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
 								</a>
 								<ul class="dropdown-menu dropdown-user">
-									<?php
-									echo '<li><a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>';
-									?>
+									<li>
+										<a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>
 									</li>
 									<li class="divider"></li>
 									<li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -83,18 +82,19 @@
 										<div class="col-xs-9 text-right">
 												<select class="form-control" name="IdSensore">
 															<?php
-															include ("../../model/visualizzaSensori.php");
-															include ('../../model/decodificaStringaSensori.php');
+															include '../../model/visualizzaSensori.php';
+															include '../../model/decodificaStringaSensori.php';
 															
+															$NumeroRigheSensori1 = '';
 															$NumeroRigheSensori1 = mysql_num_rows($RisultatoSensori1);
 															for($i=0; $i<$NumeroRigheSensori1; $i++){
 																
 																
-																$StringaDati = mysql_result ($RisultatoSensori1, $i, "StringaDati");
-																$IdSensore = mysql_result ($RisultatoSensori1, $i, "IdSensori");
+																$StringaDati = mysql_result ($RisultatoSensori1, $i, 'StringaDati');
+																$IdSensore = mysql_result ($RisultatoSensori1, $i, 'IdSensori');
 																$TipoSensore = interrogazioneTipoSensore($StringaDati);
 																$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
-																$NomeAmbiente = mysql_result ($RisultatoSensori1,$i,"NomeAmbiente");
+																$NomeAmbiente = mysql_result ($RisultatoSensori1,$i,'NomeAmbiente');
 																
 				
 															echo '<option>'; echo $IdSensore; echo '_'; echo $MarcaSensore;

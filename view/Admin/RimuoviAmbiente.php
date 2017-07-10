@@ -84,7 +84,7 @@
 															<?php
 															include '../../model/visualizzaAmbienti.php';
 															
-															$NumeroRigheAmbientiAdmin = "";
+															$NumeroRigheAmbientiAdmin = '';
 															$NumeroRigheAmbientiAdmin = mysql_num_rows($RisultatoAmbientiAdmin);
 															for($i=0; $i<$NumeroRigheAmbientiAdmin; $i++){
 																$idAmbiente = mysql_result ($RisultatoAmbientiAdmin, $i, 'idAmbiente');
