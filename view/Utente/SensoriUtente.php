@@ -98,6 +98,7 @@ include '../../model/decodificaStringaSensori.php';
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+                    	
 						<?php
                         $usermenu = '<li><a><i class="fa fa-user fa-fw"></i> Ciao, ';
                         echo $usermenu;
