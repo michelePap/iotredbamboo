@@ -61,8 +61,8 @@
                         /*
                             Saluto utente dropdown list
                         */
-                        $hello = <<<HTML <li><a><i class="fa fa-user fa-fw"></i
-                        > Ciao, Admin ! </a> HTML;
+                        $hello = '<li><a><i class="fa fa-user fa-fw">
+                        </i> Ciao, Admin ! </a>';
                         echo hello;
 >>>>>>> 7c95ad26bdd780c01e39c09ad046d8e5c98b9a23
 						?>

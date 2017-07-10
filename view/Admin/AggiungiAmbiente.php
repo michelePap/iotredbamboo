@@ -51,7 +51,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 						<?php
-                        echo '<li><a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>';
+                        /*
+                            Saluto utente dropdown list
+                        */
+                        $hello = '<li><a><i class="fa fa-user fa-fw"></i
+                        > Ciao, Admin ! </a>';
+                        echo hello;
 						?>
                         </li>
                         <li class="divider"></li>
@@ -87,11 +92,12 @@
                                 <div class="col-xs-6 text-right">
 									<select class="form-control" name="username">
 												<?php
-												include ("../../model/visualizzaClienti.php");
+												include '../../model/visualizzaClienti.php';
 												
 												$numeroClienti = mysql_num_rows($RisultatoClienti);
 												for($i=0; $i<$numeroClienti; $i++){
 													$utente = mysql_result ($RisultatoClienti, $i, 'Username');
+                                                    
                                                 echo '<option>'; echo $utente; echo'</option>';
 												}
 												?>
