@@ -12,7 +12,7 @@ mysql_select_db("$db_name",$connect);
 //$interrogazione = "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'";
 
 $interrogazione = sprintf(
-  "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'",
+  "SELECT * FROM `utenti` WHERE Username = '%s' AND Password = '%s'",
   mysql_real_escape_string($username),
   mysql_real_escape_string($password)
 );
