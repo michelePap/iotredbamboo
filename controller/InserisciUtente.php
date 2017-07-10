@@ -1,5 +1,5 @@
 <?php
-	include ("config.php");
+	include 'config.php';
 
 	$Username = $_POST['Username'];
 	$Password = $_POST['Password'];
@@ -12,7 +12,3 @@
 		$Risultato = mysql_query($interrogazioneAggiungiUtente);
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
-		
-	
-	
-?>

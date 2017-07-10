@@ -1,5 +1,5 @@
 <?php
-	include ("config.php");
+	include 'config.php';
 
 	$ambienteget = $_POST['IdAmbiente'];
 	
@@ -14,6 +14,3 @@
 	$Risultato = mysql_query($interrogazioneRimuoviAmbiente);
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
-	  
-	
-?>

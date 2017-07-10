@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("config.php");
+include 'config.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -11,8 +11,7 @@ $_SESSION['username'] = $username;
 
 	$interrogazione = "SELECT * FROM `utenti` WHERE Username = '$username' AND Password = '$password'";
 
-	$Risultato = mysql_query($interrogazione)
-      or die ("Select Non Riuscita");
+	$Risultato = mysql_query($interrogazione);
 
 	$privilegi = mysql_result ($Risultato, $NumeroRighe, "Privilegi");
 	$NumeroRighe = mysql_num_rows($Risultato);
@@ -24,6 +23,5 @@ $_SESSION['username'] = $username;
 	} else {
 		header('location:../view/ErrorLogin.html');
 	}
-	
-?>
+
 

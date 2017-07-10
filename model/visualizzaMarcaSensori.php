@@ -1,13 +1,11 @@
 <?php
-include("../../controller/config.php");
+include '../../controller/config.php';
 
 	mysql_select_db("$db_name",$connect);
 
-	$interrogazioneMarcaSensori = "SELECT * FROM `marcasensore`";
+	$interrogazioneMarcaSensori = 'SELECT * FROM `marcasensore`';
 	
-	$RisultatoMarcaSensori = mysql_query($interrogazioneMarcaSensori)
-      or die ("Select Non Riuscita");
+	$RisultatoMarcaSensori = mysql_query($interrogazioneMarcaSensori);
 
 	$NumeroRigheMarcaSensori = mysql_num_rows($RisultatoMarcaSensori);
 
-?> 

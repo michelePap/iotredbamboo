@@ -1,9 +1,9 @@
 <?php
-	include ("config.php");
+	include 'config.php';
 
 	$sensoreget = $_POST['IdSensore'];
 	
-	$pos = strpos ("$sensoreget","_");
+	$pos = strpos ("$sensoreget",'_');
 	  
 	$IdSensore = substr($sensoreget,0,$pos);
 	
@@ -14,6 +14,3 @@
 	$Risultato = mysql_query($interrogazioneRimuoviSensore);
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
-	  
-	
-?>

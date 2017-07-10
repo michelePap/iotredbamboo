@@ -1,5 +1,5 @@
 <?php
-	include ("config.php");
+	include 'config.php';
 
 	$username = $_POST['username'];
 	$nomeAmbiente = $_POST['nomeAmbiente'];
@@ -14,5 +14,3 @@
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
 	  
-	
-?>
