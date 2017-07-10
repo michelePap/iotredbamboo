@@ -1,0 +1,24 @@
+.ambienti{
+	padding: 0 30px 0 30px;
+
+}
+
+.sfondo{
+	color: rgb(238,238,238);
+}
+
+.nomeAmbiente{
+	font-size: 20px;
+}
+
+.tipologiaAmbiente{
+	font-size: 15px;
+}
+
+.utenti{
+	text-align: left;
+}
+
+.formAggiungiAmbiente{
+	text-align: right;
+}
