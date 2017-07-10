@@ -1,8 +1,8 @@
 <?php
 session_start();
 $ID = $_GET['idAmbiente'];
-include('../../model/visualizzaSensori.php');
-include('../../model/decodificaStringaSensori.php');
+include '../../model/visualizzaSensori.php';
+include '../../model/decodificaStringaSensori.php';
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -60,7 +60,7 @@ include('../../model/decodificaStringaSensori.php');
 					$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
 					for ($i=0; $i<$NumeroRigheSensori; $i++){
 						
-						$StringaDati = mysql_result ($RisultatoSensori, $i, "StringaDati");
+						$StringaDati = mysql_result ($RisultatoSensori, $i, 'StringaDati');
 				
 						$TipoSensore = interrogazioneTipoSensore($StringaDati);
 						$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
@@ -99,7 +99,11 @@ include('../../model/decodificaStringaSensori.php');
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 						<?php
-                        echo '<li><a><i class="fa fa-user fa-fw"></i> Ciao, '; echo $_SESSION['username']; echo ' ! </a>';
+                        $usermenu = '<li><a><i class="fa fa-user fa-fw"></i> Ciao, ';
+                        echo $usermenu;
+                        echo $_SESSION['username'];
+                        $end = ' ! </a>';;
+                        echo $end;
 						?>
                         </li>
                         <li class="divider"></li>

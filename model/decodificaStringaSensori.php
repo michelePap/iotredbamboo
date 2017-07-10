@@ -1,10 +1,10 @@
 <?php
-include("../../controller/config.php");
+include '../../controller/config.php';
 
 	mysql_select_db("$db_name",$connect);
 	
 	function findNewPos($Stringa){
-		$pos = strpos ("$Stringa","_");
+		$pos = strpos ('$Stringa','_');
 		$defaultPos = 7;
 		return $pos - $defaultPos;
 	}
@@ -24,7 +24,8 @@ include("../../controller/config.php");
 		$interrogazioneTipoSensore = "SELECT `nometipo` FROM `tiposensore` WHERE `IdTipo` = '$TipoSensore'";
 		$risultato = mysql_query($interrogazioneTipoSensore);
 		$riga = mysql_num_rows($risultato);
-		return $Tipo =  mysql_result ($risultato, $riga-1, "nometipo");
+		$Tipo =  mysql_result ($risultato, $riga-1, 'nometipo');
+		return $Tipo;
 	}
 
 	function interrogazioneMarcaSensore($stringa){
@@ -32,7 +33,8 @@ include("../../controller/config.php");
 		$interrogazioneMarcaSensore = "SELECT `nomemarca` FROM `marcasensore` WHERE `IdMarca` = '$MarcaSensore'";
 		$risultato = mysql_query($interrogazioneMarcaSensore);
 		$riga = mysql_num_rows($risultato);
-		return $Marca =  mysql_result ($risultato, $riga-1, "nomemarca");
+		$Marca =  mysql_result ($risultato, $riga-1, 'nomemarca');
+		return $Marca;
 	}
 	 
 	 function getGiorno($Stringa, $pos){
@@ -70,8 +72,4 @@ include("../../controller/config.php");
 		$MessaggioSensore = substr ($Stringa, 24 + $pos);
 		return $MessaggioSensore;
 	 }
-	 
-	 
-	 
-	 
-?> 
+

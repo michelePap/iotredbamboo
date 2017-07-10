@@ -1,5 +1,5 @@
 <?php
-include("../../controller/config.php");
+include '../../controller/config.php';
 
 	mysql_select_db("$db_name",$connect);
 
@@ -8,12 +8,10 @@ include("../../controller/config.php");
 	function interrogazioneAmbientiUtente($stringa){
 		
 		$interrogazioneAmbientiUtente = "SELECT * FROM `ambienti` WHERE `Username` = '$stringa'";
-		return $Risultato = mysql_query($interrogazioneAmbientiUtente);
+		$Risultato = mysql_query($interrogazioneAmbientiUtente);
+		return $Risultato;
 	}
 	
-	$RisultatoAmbientiAdmin = mysql_query($interrogazioneAmbientiAdmin)
-      or die ("Select Non Riuscita");
+	$RisultatoAmbientiAdmin = mysql_query($interrogazioneAmbientiAdmin);
 
 	$NumeroRigheAmbienteAdmin = mysql_num_rows($RisultatoAmbientiAdmin);
-
-?> 

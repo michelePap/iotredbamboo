@@ -53,7 +53,12 @@ session_start();
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 						<?php
-                        echo '<li><a><i class="fa fa-user fa-fw"></i> Ciao, '; echo $_SESSION['username']; echo ' ! </a>';
+                        $usermenu = '<li><a><i class="fa fa-user fa-fw"></i> Ciao, ';
+                        echo $usermenu;
+                        echo $_SESSION['username'];
+                        $end = ' ! </a>';;
+                        echo $end;
+                        
 						?>
                         </li>
                         <li class="divider"></li>
@@ -74,7 +79,7 @@ session_start();
             <!-- /.row -->
 			<?php
 			
-			include ('../../model/visualizzaAmbienti.php');
+			include '../../model/visualizzaAmbienti.php';
 			echo '<div class="row">';
 			
 			$RisultatoAmbientiUtente = interrogazioneAmbientiUtente($_SESSION['username']);
@@ -82,10 +87,10 @@ session_start();
 			$NumeroRigheAmbienteUtente = mysql_num_rows($RisultatoAmbientiUtente);
 			for ($i=0; $i<$NumeroRigheAmbienteUtente; $i++){
 				
-				$IdAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, "IdAmbiente");
-				$TipologiaAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, "TipologiaAmbiente");
-				$NomeAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, "NomeAmbiente");
-				$UsernameUtente = mysql_result ($RisultatoAmbientiUtente, $i, "Username");
+				$IdAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'IdAmbiente');
+				$TipologiaAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'TipologiaAmbiente');
+				$NomeAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'NomeAmbiente');
+				$UsernameUtente = mysql_result ($RisultatoAmbientiUtente, $i, 'Username');
 	
 				echo '<div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
