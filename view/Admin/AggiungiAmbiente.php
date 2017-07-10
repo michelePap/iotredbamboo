@@ -90,7 +90,8 @@
 												
 												$numeroClienti = mysql_num_rows($RisultatoClienti);
 												for($i=0; $i<$numeroClienti; $i++){
-													$utente = mysql_result ($RisultatoClienti, $i, 'Username');
+													$utente = "";
+                                                    $utente = mysql_result ($RisultatoClienti, $i, 'Username');
                                                     
                                                 echo '<option>'; echo $utente; echo'</option>';
 												}

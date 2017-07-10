@@ -49,9 +49,8 @@
 									<i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
 								</a>
 								<ul class="dropdown-menu dropdown-user">
-									<?php
-									echo '<li><a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>';
-									?>
+									<li>
+										<a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a>
 									</li>
 									<li class="divider"></li>
 									<li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -83,8 +82,9 @@
 										<div class="col-xs-9 text-right">
 												<select class="form-control" name="IdAmbiente">
 															<?php
-															include ("../../model/visualizzaAmbienti.php");
+															include '../../model/visualizzaAmbienti.php';
 															
+															$NumeroRigheAmbientiAdmin = "";
 															$NumeroRigheAmbientiAdmin = mysql_num_rows($RisultatoAmbientiAdmin);
 															for($i=0; $i<$NumeroRigheAmbientiAdmin; $i++){
 																$idAmbiente = mysql_result ($RisultatoAmbientiAdmin, $i, 'idAmbiente');
