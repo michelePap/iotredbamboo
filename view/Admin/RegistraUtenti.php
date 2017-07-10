@@ -51,7 +51,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
 						<?php
-                        $hello = <<<HTML <li><a><i class="fa fa-user fa-fw"></i> Ciao, Admin ! </a> HTML;
+                        /*
+                            Saluto utente dropdown list
+                        */
+                        $hello = <<<HTML <li><a><i class="fa fa-user fa-fw"></i
+                        > Ciao, Admin ! </a> HTML;
                         echo hello;
 						?>
                         </li>
