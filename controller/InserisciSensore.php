@@ -25,14 +25,15 @@
 		
 		$StringaDati = $str1.$str2.$ID.$strDefault;
 		
-		return $stringaDati;		
+		return $StringaDati;		
 	  }
 	  
 		$stringaDati = creaStringa($Tipo,$Marca, $NumeroRigheSensori);
 	
-		$interrogazioneAggiungiAmbiente = "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, '$stringaDati', '$ID')";
-	
-		$Risultato = mysql_query($interrogazioneAggiungiAmbiente);
+		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, ?, ?)");
+		//$stmt->bindParam('si', $stringaDati, $ID);
+		$stmt->execute(array($stringaDati, $ID));
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
 		

@@ -84,19 +84,13 @@
                             <div class="col-xs-9 text-right">
                                <select class="form-control" name="IdAmbiente">
                                 <?php
-                                include '../../model/visualizzaAmbienti.php';
-
-                                $NumeroRigheAmbientiAdmin = mysql_num_rows($RisultatoAmbientiAdmin);
-                                for($i=0; $i<$NumeroRigheAmbientiAdmin; $i++){
-                                   $idAmbiente = mysql_result ($RisultatoAmbientiAdmin, $i, 'idAmbiente');
-                                   $ambiente = mysql_result ($RisultatoAmbientiAdmin, $i, 'nomeAmbiente');
-                                   $utente = mysql_result ($RisultatoAmbientiAdmin, $i, 'Username');
-
-                                   echo '<option>'; echo $idAmbiente; echo'_';
-                                   echo $ambiente; echo' di ';
-                                   echo $utente; echo'</option>';
-                               }
-                               ?>
+                              include '../../model/visualizzaAmbienti.php';
+                              
+                              foreach ($RisultatoAmbientiAdmin as $AmbientiAdmin) {
+                                  echo "<option>" . $AmbientiAdmin['IdAmbiente'] . "_" . $AmbientiAdmin['NomeAmbiente'] . " di " . $AmbientiAdmin['Username'] . "</option>";
+                              }
+                              
+                              ?>
                            </select>
                        </div>
                    </div>
