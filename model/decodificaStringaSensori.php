@@ -3,7 +3,6 @@ include '../../controller/config.php';
 
 	mysql_select_db((string)$db_name,$connect);
 	
-	$NUMTIPPMARCA = 3;
 	
 	function findNewPos($Stringa){
 		$pos = strpos ('$Stringa','_');
@@ -12,12 +11,12 @@ include '../../controller/config.php';
 	}
 
 	 function getTipo($Stringa){
-		$TipoSensore = substr($Stringa, 0,$NUMTIPPMARCA);
+		$TipoSensore = substr($Stringa, 0,3);
 		return $TipoSensore;
 	 }
 	 
 	 function getMarca($Stringa){
-		$MarcaSensore = substr($Stringa, $NUMTIPPMARCA,$NUMTIPPMARCA);
+		$MarcaSensore = substr($Stringa, 3,3);
 		return $MarcaSensore;
 	 }
 	 
