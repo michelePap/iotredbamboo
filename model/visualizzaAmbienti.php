@@ -1,17 +1,17 @@
 <?php
-include '../../controller/config.php';
 
-	mysql_select_db("$db_name",$connect);
-
-	$interrogazioneAmbientiAdmin = "SELECT * FROM `ambienti` ORDER BY `ambienti`.`Username`";
+$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+$stmt = $dbh->prepare( 'SELECT * FROM `ambienti` ORDER BY `Username`' );
+$stmt->execute();
+$RisultatoAmbientiAdmin = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
 	function interrogazioneAmbientiUtente($stringa){
-		
-		$interrogazioneAmbientiUtente = "SELECT * FROM `ambienti` WHERE `Username` = '$stringa'";
-		$Risultato = mysql_query($interrogazioneAmbientiUtente);
+
+		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "SELECT * FROM `ambienti` WHERE `Username` = '$stringa'");
+		$stmt->execute();
+		$Risultato = $stmt->fetchAll(PDO::FETCH_ASSOC);	
+
 		return $Risultato;
 	}
-	
-	$RisultatoAmbientiAdmin = mysql_query($interrogazioneAmbientiAdmin);
 
-	$NumeroRigheAmbienteAdmin = mysql_num_rows($RisultatoAmbientiAdmin);

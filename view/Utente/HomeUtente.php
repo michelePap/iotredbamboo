@@ -78,43 +78,37 @@ session_start();
             </div>
             <!-- /.row -->
 			<?php
+
+						include '../../model/visualizzaAmbienti.php';
+						echo '<div class="row">';
+						$RisultatoAmbientiUtente = interrogazioneAmbientiUtente($_SESSION['username']);
+						
+						foreach ($RisultatoAmbientiUtente as $AmbientiUtente){
 			
-			include '../../model/visualizzaAmbienti.php';
-			echo '<div class="row">';
-			
-			$RisultatoAmbientiUtente = interrogazioneAmbientiUtente($_SESSION['username']);
-			
-			$NumeroRigheAmbienteUtente = mysql_num_rows($RisultatoAmbientiUtente);
-			for ($i=0; $i<$NumeroRigheAmbienteUtente; $i++){
-				
-				$IdAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'IdAmbiente');
-				$TipologiaAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'TipologiaAmbiente');
-				$NomeAmbiente = mysql_result ($RisultatoAmbientiUtente, $i, 'NomeAmbiente');
-				$UsernameUtente = mysql_result ($RisultatoAmbientiUtente, $i, 'Username');
-	
-				echo '<div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-industry fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="nomeAmbiente">'; echo "$NomeAmbiente"; echo'</div>
-                                    <div class="tipologiaAmbiente">'; echo "$TipologiaAmbiente"; echo'</div>
-                                </div>
-                            </div>
-                        </div>            
-                            <div class="panel-footer">
-								<a href="SensoriUtente.php?idAmbiente=';echo $IdAmbiente; echo '">Visualizza dati sensori</a>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>';
-			}
-			?>
+							echo '<div class="col-lg-3 col-md-6">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-xs-3">
+											<i class="fa fa-industry fa-5x"></i>
+										</div>
+										<div class="col-xs-9 text-right">
+											<div class="nomeAmbiente">'; echo $AmbientiUtente['NomeAmbiente']; echo'</div>
+											<div class="tipologiaAmbiente">'; echo $AmbientiUtente['TipologiaAmbiente']; echo'</div>		
+										</div>
+									</div>
+								</div>            
+								<div class="panel-footer">
+									<a href="SensoriUtente.php?idAmbiente=';echo $AmbientiUtente['IdAmbiente']; echo '">Visualizza dati sensori</a>
+									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>';
+							
+				}
+				?>
         
     </div>
     
