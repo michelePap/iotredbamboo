@@ -1,16 +1,16 @@
 <?php
-	include 'config.php';
 
 	$username = $_POST['username'];
 	$nomeAmbiente = $_POST['nomeAmbiente'];
 	$tipoAmbiente = $_POST['tipoAmbiente'];
-	
-	mysql_select_db("$db_name",$connect);
 
-	$interrogazioneAggiungiAmbiente = "INSERT INTO `ambienti` (`IdAmbiente`, `NomeAmbiente`, `TipologiaAmbiente`, `Username`)
-	VALUES (NULL, '$nomeAmbiente', '$tipoAmbiente', '$username');";
-	
-	$Risultato = mysql_query($interrogazioneAggiungiAmbiente);
+	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "INSERT INTO `ambienti` (`IdAmbiente`, `NomeAmbiente`, `TipologiaAmbiente`, `Username`)
+	VALUES (NULL, :nomeAmbiente, :tipoAmbiente, :username)");
+		$stmt->bindParam(':nomeAmbiente', $nomeAmbiente);
+		$stmt->bindParam(':tipoAmbiente', $tipoAmbiente);
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
 	  

@@ -1,14 +1,12 @@
 <?php
-	include 'config.php';
 
 	$Username = $_POST['Username'];
 	$Password = $_POST['Password'];
-	
-	mysql_select_db("$db_name",$connect);
-	  
-	
-		$interrogazioneAggiungiUtente = "INSERT INTO `utenti` (`Username`, `Password`, `Privilegi`) VALUES ('$Username', '$Password', '0')";
 
-		$Risultato = mysql_query($interrogazioneAggiungiUtente);
+	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "INSERT INTO `utenti` (`Username`, `Password`, `Privilegi`) VALUES (:Username, :Password, '0')");
+		$stmt->bindParam(':Username', $Username);
+		$stmt->bindParam(':Password', $Password);
+		$stmt->execute();
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
