@@ -102,7 +102,8 @@ include '../../model/decodificaStringaSensori.php';
 						<?php
                         $usermenu = '<li><a><i class="fa fa-user fa-fw"></i> Ciao, ';
                         echo $usermenu;
-                        echo $_SESSION['username'];
+                        $username = $_SESSION['username'];
+                        echo htmlspecialchars($username);
                         $end = ' ! </a>';;
                         echo $end;
 						?>
