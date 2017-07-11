@@ -4,7 +4,7 @@
 	$Username = $_POST['Username'];
 	$Password = $_POST['Password'];
 	
-	mysql_select_db("$db_name",$connect);
+	mysql_select_db((string)$db_name,$connect);
 	  
 	
 		$interrogazioneAggiungiUtente = "INSERT INTO `utenti` (`Username`, `Password`, `Privilegi`) VALUES ('$Username', '$Password', '0')";
