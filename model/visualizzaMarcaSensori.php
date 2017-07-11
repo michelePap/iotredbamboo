@@ -1,7 +1,7 @@
 <?php
 include '../../controller/config.php';
 
-	mysql_select_db("$db_name",$connect);
+	mysql_select_db((string)$db_name,$connect);
 
 	$interrogazioneMarcaSensori = 'SELECT * FROM `marcasensore`';
 	

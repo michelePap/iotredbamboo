@@ -5,7 +5,7 @@
 	$MarcaSensori = $_POST['MarcaSensori'];
 	$TipoSensori = $_POST['TipoSensori'];
 	
-	mysql_select_db("$db_name",$connect);
+	mysql_select_db((string)$db_name,$connect);
 
 	 $ID = substr($IdAmbiente,0,1);
 

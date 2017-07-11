@@ -3,11 +3,11 @@
 
 	$sensoreget = $_POST['IdSensore'];
 	
-	$pos = strpos ("$sensoreget",'_');
+	$pos = strpos ((string)$sensoreget,'_');
 	  
 	$IdSensore = substr($sensoreget,0, (string)$pos);
 	
-	mysql_select_db("$db_name",$connect);
+	mysql_select_db((string)$db_name,$connect);
 
 	$interrogazioneRimuoviSensore = "DELETE FROM `sensori` WHERE `sensori`.`IdSensori` = $IdSensore";
 	
