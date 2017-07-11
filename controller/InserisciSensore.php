@@ -1,11 +1,11 @@
 <?php
-	include 'config.php';
+	include ("config.php");
 
 	$IdAmbiente = $_POST['IdAmbiente'];
 	$MarcaSensori = $_POST['MarcaSensori'];
 	$TipoSensori = $_POST['TipoSensori'];
 	
-	mysql_select_db((string)$db_name,$connect);
+	mysql_select_db("$db_name",$connect);
 
 	 $ID = substr($IdAmbiente,0,1);
 
@@ -15,7 +15,8 @@
 
 	 $interrogazioneSensori = "SELECT * FROM `sensori`";
 	
-	 $RisultatoSensori = mysql_query($interrogazioneSensori);
+	 $RisultatoSensori = mysql_query($interrogazioneSensori)
+      or die ("Select Non Riuscita");
 
 	 $NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
 	  
@@ -23,9 +24,8 @@
 		
 		$strDefault = "_000000000000000_in attesa di installazione";
 		
-		$StringaDati = $str1.$str2.$ID.$strDefault;
+		return $StringaDati = $str1.$str2.$ID.$strDefault;
 		
-		return $stringaDati;		
 	  }
 	  
 		$stringaDati = creaStringa($Tipo,$Marca, $NumeroRigheSensori);
@@ -36,3 +36,6 @@
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
 		
+	
+	
+?>
