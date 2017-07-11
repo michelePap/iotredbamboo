@@ -31,9 +31,10 @@
 		$stringaDati = creaStringa($Tipo,$Marca, $NumeroRigheSensori);
 	
 		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
-		$stmt = $dbh->prepare( "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, ?, ?)");
-		//$stmt->bindParam('si', $stringaDati, $ID);
-		$stmt->execute(array($stringaDati, $ID));
+		$stmt = $dbh->prepare( "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, :stringaDati, :ID)");
+		$stmt->bindParam(':stringaDati', $stringaDati);
+		$stmt->bindParam(':ID', $ID);
+		$stmt->execute();
 	  
 	  	header('location:../view/Admin/HomeAdmin.php');
 		
