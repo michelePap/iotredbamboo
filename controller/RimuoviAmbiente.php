@@ -9,7 +9,7 @@
 	
 	mysql_select_db("$db_name",$connect);
 
-	$interrogazioneRimuoviAmbiente = 'DELETE FROM `ambienti` WHERE `ambienti`.`IdAmbiente` = $IdAmbiente';
+	$interrogazioneRimuoviAmbiente = "DELETE FROM `ambienti` WHERE `ambienti`.`IdAmbiente` = $IdAmbiente";
 	
 	$Risultato = mysql_query($interrogazioneRimuoviAmbiente);
 	  
