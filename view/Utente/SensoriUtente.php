@@ -70,13 +70,13 @@ include '../../model/decodificaStringaSensori.php';
 					$ValoreSensore = getValore($SensoriUtente['StringaDati'], $pos);
 					$Messaggio = getMessaggio($SensoriUtente['StringaDati'], $pos);
 				
-						$contenuto =" Stringa dati:  $SensoriUtente['StringaDati']  
+					/**$contenuto =" Stringa dati:  $SensoriUtente['StringaDati']  
 										Tipo Sensore: $TipoSensore,  
 										Marca Sensore: $MarcaSensore,  
 										Data rilevazione: $GiornoData/$MeseData/$AnnoData,  	
 										Ora rilevazione: $OraData:$MinutiData,  
 										Misurazione: $ValoreSensore,  
-										$Messaggio"    ;
+										$Messaggio"    ;*/
 										
 					}
 						
