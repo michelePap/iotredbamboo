@@ -1,10 +1,7 @@
 <?php
-include '../../controller/config.php';
 
-	mysql_select_db("$db_name",$connect);
 
-	$interrogazioneClienti = 'SELECT * FROM `utenti` WHERE `Privilegi` = 0';
-	
-	$RisultatoClienti = mysql_query($interrogazioneClienti);
-
-	$NumeroRigheClienti = mysql_num_rows($RisultatoClienti);
+    $dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+	$stmt = $dbh->prepare( 'SELECT * FROM `utenti` WHERE `Privilegi` = 0');
+	$stmt->execute();
+	$RisultatoClienti = $stmt->fetchAll(PDO::FETCH_ASSOC);

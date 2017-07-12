@@ -88,11 +88,10 @@
 												<?php
 												include '../../model/visualizzaClienti.php';
 												
-                                                $numeroClienti = '';
-												$numeroClienti = mysql_num_rows($RisultatoClienti);
-												for($i=0; $i<$numeroClienti; $i++){
+                                              foreach($RisultatoClienti as $clienti){
+												
 													$utente = '';
-                                                    $utente = mysql_result ($RisultatoClienti, $i, 'Username');
+                                                    $utente = $clienti['Username'];
                                                     
                                                 echo '<option>'; echo $utente; echo'</option>';
 												}

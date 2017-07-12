@@ -113,11 +113,9 @@
                 <?php
                 include '../../model/visualizzaTipoSensori.php';
 
-                $NumeroRigheTipoSensori = mysql_num_rows($RisultatoTipoSensori);
-
-                for($i=0; $i<$NumeroRigheTipoSensori; $i++){
-                   $IdTipo = mysql_result ($RisultatoTipoSensori, $i, 'IdTipo');
-                   $NomeTipo = mysql_result ($RisultatoTipoSensori, $i, 'NomeTipo');
+                 foreach ($RisultatoTipoSensori as $TipoSensori){
+                   $IdTipo = $TipoSensori['IdTipo'];
+                   $NomeTipo = $TipoSensori['NomeTipo'];
 
                    echo '<option>'; echo $IdTipo; echo'_';
                    echo $NomeTipo; echo'</option>';
@@ -136,13 +134,13 @@
         <?php
         include '../../model/visualizzaMarcaSensori.php';
 
-        $NumeroRigheMarcaSensori = mysql_num_rows($RisultatoMarcaSensori);
-        for($i=0; $i<$NumeroRigheMarcaSensori; $i++){
-           $IdMarca = mysql_result ($RisultatoMarcaSensori, $i, 'IdMarca');
-           $NomeMarca = mysql_result ($RisultatoMarcaSensori, $i, 'nomeMarca');
-
+         foreach ($RisultatoMarcaSensori as $MarcaSensori){
+            
+            $IdMarca = $MarcaSensori['IdMarca'];
+            $NomeMarca = $MarcaSensori['NomeMarca'];
+            
            echo '<option>'; echo $IdMarca; echo'_';
-           echo $NomeMarca;echo'</option>';
+           echo $NomeMarca ;echo'</option>';
        }
        ?>
    </select>
