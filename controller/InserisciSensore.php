@@ -29,16 +29,15 @@
 	  }
 	  
 		$stringaDati = creaStringa($Tipo,$Marca, $NumeroRigheSensori);
-	
-	$csrf = 'io';
-	$csrf1= 'io';
+
 	
 		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
-		if (hash_equals($csrf,$csrf1)){
+		
+	
 		$stmt = $dbh->prepare( "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, :stringaDati, :ID)");
 		$stmt->bindParam(':stringaDati', $stringaDati);
 		$stmt->bindParam(':ID', $ID);
 		$stmt->execute();
-		}
+		
 	  	header('location:../view/Admin/HomeAdmin.php');
 		
