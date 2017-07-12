@@ -1,0 +1,13 @@
+
+*.js
+*.css
+*.scss
+*.less
+*.txt
+*.otf
+*.woff2
+*.woff
+*.ttf
+*.svg
+*.eot
+*.map
