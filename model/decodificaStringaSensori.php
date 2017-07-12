@@ -1,7 +1,4 @@
 <?php
-include '../../controller/config.php';
-
-	mysql_select_db("$db_name",$connect);
 	
 	function findNewPos($Stringa){
 		$pos = strpos ('$Stringa','_');
@@ -21,19 +18,27 @@ include '../../controller/config.php';
 	 
 	 function interrogazioneTipoSensore($stringa){
 		$TipoSensore = getTipo($stringa);
-		$interrogazioneTipoSensore = "SELECT `nometipo` FROM `tiposensore` WHERE `IdTipo` = '$TipoSensore'";
-		$risultato = mysql_query($interrogazioneTipoSensore);
-		$riga = mysql_num_rows($risultato);
-		$Tipo =  mysql_result ($risultato, $riga-1, 'nometipo');
+
+		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "SELECT `nometipo` FROM `tiposensore` WHERE `IdTipo` = :TipoSensore");
+		$stmt->bindParam(':TipoSensore', $TipoSensore);
+		$stmt->execute();
+		$Risultato = $stmt->fetch(PDO::FETCH_NUM);	
+
+		$Tipo =  $Risultato[0];
 		return $Tipo;
 	}
 
 	function interrogazioneMarcaSensore($stringa){
 		$MarcaSensore = getMarca($stringa);
-		$interrogazioneMarcaSensore = "SELECT `nomemarca` FROM `marcasensore` WHERE `IdMarca` = '$MarcaSensore'";
-		$risultato = mysql_query($interrogazioneMarcaSensore);
-		$riga = mysql_num_rows($risultato);
-		$Marca =  mysql_result ($risultato, $riga-1, 'nomemarca');
+
+		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "SELECT `nomemarca` FROM `marcasensore` WHERE `IdMarca` = :MarcaSensore");
+		$stmt->bindParam(':MarcaSensore', $MarcaSensore);
+		$stmt->execute();
+		$Risultato = $stmt->fetch(PDO::FETCH_NUM);
+
+		$Marca =  $Risultato[0];
 		return $Marca;
 	}
 	 
