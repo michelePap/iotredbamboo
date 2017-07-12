@@ -82,21 +82,18 @@ session_start();
 
         $RisultatoSensori = interrogazioneSensori($ID);
 
-        $NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
-        for ($i=0; $i<$NumeroRigheSensori; $i++){
+     foreach ($RisultatoSensori as $SensoriAdmin){
 
-            $StringaDati = mysql_result ($RisultatoSensori, $i, "StringaDati");
-
-            $TipoSensore = interrogazioneTipoSensore($StringaDati);
-            $MarcaSensore = interrogazioneMarcaSensore($StringaDati);
-            $pos = findNewPos($StringaDati);
-            $GiornoData = getGiorno($StringaDati, $pos);
-            $MeseData = getMese($StringaDati, $pos);
-            $AnnoData = getAnno($StringaDati, $pos);
-            $OraData = getOra($StringaDati, $pos);
-            $MinutiData = getMinuti($StringaDati, $pos);
-            $ValoreSensore = getValore($StringaDati, $pos);
-            $Messaggio = getMessaggio($StringaDati, $pos);
+            $TipoSensore = interrogazioneTipoSensore($SensoriAdmin['StringaDati']);
+            $MarcaSensore = interrogazioneMarcaSensore($SensoriAdmin['StringaDati']);
+            $pos = findNewPos($SensoriAdmin['StringaDati']);
+            $GiornoData = getGiorno($SensoriAdmin['StringaDati'], $pos);
+            $MeseData = getMese($SensoriAdmin['StringaDati'], $pos);
+            $AnnoData = getAnno($SensoriAdmin['StringaDati'], $pos);
+            $OraData = getOra($SensoriAdmin['StringaDati'], $pos);
+            $MinutiData = getMinuti($SensoriAdmin['StringaDati'], $pos);
+            $ValoreSensore = getValore($SensoriAdmin['StringaDati'], $pos);
+            $Messaggio = getMessaggio($SensoriAdmin['StringaDati'], $pos);
 
 
             echo '<div class="col-lg-6 col-md-6">
@@ -107,7 +104,7 @@ session_start();
                             <i class="fa fa-dot-circle-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="nomeAmbiente">'; echo "$StringaDati"; echo'</div>
+                            <div class="nomeAmbiente">'; echo $SensoriAdmin['StringaDati']; echo'</div>
                             <div class="tipologiaAmbiente">'; echo "Tipo Sensore: $TipoSensore"; echo'</div>
                             <div class="tipologiaAmbiente">'; echo "Marca Sensore: $MarcaSensore"; echo'</div>
                             <div class="tipologiaAmbiente">'; echo "Data rilevazione: $GiornoData/$MeseData/$AnnoData "; echo'</div>	
