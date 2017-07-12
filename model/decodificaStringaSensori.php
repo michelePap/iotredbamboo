@@ -2,8 +2,8 @@
 	
 	function findNewPos($Stringa){
 		$pos = strpos ('$Stringa','_');
-		$defaultPos = 7;
-		return $pos - $defaultPos;
+		$defaultPos = 9;
+		return $pos;
 	}
 
 	 function getTipo($Stringa){

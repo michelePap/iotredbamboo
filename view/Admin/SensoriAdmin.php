@@ -86,7 +86,7 @@ session_start();
 
             $TipoSensore = interrogazioneTipoSensore($SensoriAdmin['StringaDati']);
             $MarcaSensore = interrogazioneMarcaSensore($SensoriAdmin['StringaDati']);
-            $pos = findNewPos($SensoriAdmin['StringaDati']);
+            $pos = findNewPos((string)$SensoriAdmin['StringaDati']);
             $GiornoData = getGiorno($SensoriAdmin['StringaDati'], $pos);
             $MeseData = getMese($SensoriAdmin['StringaDati'], $pos);
             $AnnoData = getAnno($SensoriAdmin['StringaDati'], $pos);
@@ -94,6 +94,14 @@ session_start();
             $MinutiData = getMinuti($SensoriAdmin['StringaDati'], $pos);
             $ValoreSensore = getValore($SensoriAdmin['StringaDati'], $pos);
             $Messaggio = getMessaggio($SensoriAdmin['StringaDati'], $pos);
+
+            $Stringa = htmlspecialchars($SensoriAdmin['StringaDati']);
+            $Tipo = htmlspecialchars("Tipo Sensore: $TipoSensore");
+            $Marca = htmlspecialchars("Marca Sensore: $MarcaSensore");
+            $Data = htmlspecialchars("Data rilevazione: $GiornoData/$MeseData/$AnnoData ");
+            $Ora = htmlspecialchars("Ora rilevazione: $OraData:$MinutiData");
+            $Misura = htmlspecialchars("Misurazione: $ValoreSensore");
+            $Msg = htmlspecialchars("$Messaggio");
 
 
             echo '<div class="col-lg-6 col-md-6">
@@ -104,13 +112,13 @@ session_start();
                             <i class="fa fa-dot-circle-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="nomeAmbiente">'; echo $SensoriAdmin['StringaDati']; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo "Tipo Sensore: $TipoSensore"; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo "Marca Sensore: $MarcaSensore"; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo "Data rilevazione: $GiornoData/$MeseData/$AnnoData "; echo'</div>	
-                            <div class="tipologiaAmbiente">'; echo "Ora rilevazione: $OraData:$MinutiData"; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo "Misurazione: $ValoreSensore"; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo "$Messaggio"; echo'</div>
+                            <div class="nomeAmbiente">'; echo $Stringa; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo $Tipo; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo $Marca; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo $Data; echo'</div>	
+                            <div class="tipologiaAmbiente">'; echo $Ora; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo $Misura; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo $Msg; echo'</div>
                         </div>
                     </div>
                 </div>            
