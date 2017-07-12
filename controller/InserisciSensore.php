@@ -1,42 +1,34 @@
 <?php
 
 
-	$IdAmbiente = $_POST['IdAmbiente'];
-	$MarcaSensori = $_POST['MarcaSensori'];
-	$TipoSensori = $_POST['TipoSensori'];
-	
+$IdAmbiente = $_POST['IdAmbiente'];
+$MarcaSensori = $_POST['MarcaSensori'];
+$TipoSensori = $_POST['TipoSensori'];
 
-	 $ID = substr($IdAmbiente,0,1);
+define('START_POINT', 0);
+define('CHAR_LENG', 3);
+define('CHAR_SING', 1);
 
-	 $Marca = substr($MarcaSensori,0,3);
+$ID = substr($IdAmbiente, START_POINT, CHAR_SING);
+$Marca = substr($MarcaSensori, START_POINT, CHAR_LENG);
+$Tipo = substr($TipoSensori, START_POINT, CHAR_LENG);
 
-	 $Tipo = substr($TipoSensori,0,3);
+$interrogazioneSensori = 'SELECT * FROM `sensori`';
 
-	 $interrogazioneSensori = "SELECT * FROM `sensori`";
-	
-	 $RisultatoSensori = mysql_query($interrogazioneSensori);
+$RisultatoSensori = mysql_query($interrogazioneSensori);
 
-	 $NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
-	  
-	  function creaStringa($str1, $str2, $ID){
-		
-		$strDefault = "_000000000000000_in attesa di installazione";
-		
-		$StringaDati = $str1.$str2.$ID.$strDefault;
-		
-		return $StringaDati;		
-	  }
-	  
-		$stringaDati = creaStringa($Tipo,$Marca, $NumeroRigheSensori);
+$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
 
-	
-		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
-		
-	
-		$stmt = $dbh->prepare( "INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, :stringaDati, :ID)");
-		$stmt->bindParam(':stringaDati', $stringaDati);
-		$stmt->bindParam(':ID', $ID);
-		$stmt->execute();
-		
-	  	header('location:../view/Admin/HomeAdmin.php');
-		
+$strDefault = '_000000000000000_in attesa di installazione';
+
+$stringaDati = $Tipo.$Marca.$NumeroRigheSensori.$strDefault;
+
+
+$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
+
+$stmt = $dbh->prepare( 'INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, :stringaDati, :ID)');
+$stmt->bindParam(':stringaDati', $stringaDati);
+$stmt->bindParam(':ID', $ID);
+$stmt->execute();
+
+header('location:../view/Admin/HomeAdmin.php');
