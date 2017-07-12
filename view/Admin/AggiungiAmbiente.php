@@ -92,8 +92,9 @@
 												
 													$utente = '';
                                                     $utente = $clienti['Username'];
+                                                    $list = "<option> $utente </option>";
                                                     
-                                                echo '<option>'; echo $utente; echo'</option>';
+                                                echo $list;
 												}
 												?>
                                             </select>

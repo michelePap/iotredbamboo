@@ -5,7 +5,7 @@
 	
 
 	
-	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+	$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
 	
 
 		
