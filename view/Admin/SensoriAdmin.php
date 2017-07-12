@@ -110,13 +110,13 @@ session_start();
                             <i class="fa fa-dot-circle-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="nomeAmbiente">' . $Stringa . '</div>
-                            <div class="tipologiaAmbiente">' . $Tipo . '</div>
-                            <div class="tipologiaAmbiente">' . $Marca . '</div>
-                            <div class="tipologiaAmbiente">' . $Data . '</div>   
-                            <div class="tipologiaAmbiente">' . $Ora .'</div>
-                            <div class="tipologiaAmbiente">' . $Misura . '</div>
-                            <div class="tipologiaAmbiente">' . $Messaggio . '</div>
+                            <div class="nomeAmbiente">' . htmlspecialchars($Stringa) . '</div>
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Tipo) . '</div>
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Marca) . '</div>
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Data) . '</div>   
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Ora) .'</div>
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Misura) . '</div>
+                            <div class="tipologiaAmbiente">' . htmlspecialchars($Messaggio) . '</div>
                         </div>
                     </div>
                 </div>            
