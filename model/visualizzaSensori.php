@@ -1,23 +1,25 @@
 <?php
 include '../../controller/config.php';
 
-	mysql_select_db("$db_name",$connect);
+$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+$stmt1 = $dbh->prepare( 'SELECT * FROM `sensori`' );
+$stmt1->execute();
+$RisultatoSensori = $stmt1->fetchAll(PDO::FETCH_ASSOC);
     
+	
+	
+$stmt2 = $dbh->prepare( 'SELECT * FROM `sensori`, `ambienti` WHERE `sensori`.`IdAmbiente` = `ambienti`.`IdAmbiente`' );
+$stmt2->execute();
+$RisultatoSensori2 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
     function interrogazioneSensori($stringa){
 		
-		$interrogazioneSensori = "SELECT * FROM `sensori` WHERE `IdAmbiente` = '$stringa'";
-		$Risultato = mysql_query($interrogazioneSensori);
+		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
+		$stmt = $dbh->prepare( "SELECT * FROM `sensori` WHERE `IdAmbiente` =  :stringa");
+		$stmt->bindParam(':stringa', $stringa);
+		$stmt->execute();
+		$Risultato = $stmt->fetchAll(PDO::FETCH_ASSOC);	
 		return $Risultato;
+	
 	}
-
-	$interrogazioneSensori = "SELECT * FROM `sensori`";
-	
-	$RisultatoSensori = mysql_query($interrogazioneSensori);
-
-	$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
     
-    $interrogazioneSensori1 = "SELECT * FROM `sensori`, `ambienti` WHERE `sensori`.`IdAmbiente` = `ambienti`.`IdAmbiente`";
-	
-	$RisultatoSensori1 = mysql_query($interrogazioneSensori1);
-
-	$NumeroRigheSensori1 = mysql_num_rows($RisultatoSensori1);

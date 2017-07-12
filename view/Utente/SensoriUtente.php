@@ -56,36 +56,27 @@ include '../../model/decodificaStringaSensori.php';
 					
 					
 					$RisultatoSensori = interrogazioneSensori($ID);
-			
-					$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
-					for ($i=0; $i<$NumeroRigheSensori; $i++){
+
+					 foreach ($RisultatoSensori as $SensoriUtente){
+
+					$TipoSensore = interrogazioneTipoSensore($SensoriUtente['StringaDati']);
+					$MarcaSensore = interrogazioneMarcaSensore($SensoriUtente['StringaDati']);
+					$pos = findNewPos($SensoriUtente['StringaDati']);
+					$GiornoData = getGiorno($SensoriUtente['StringaDati'], $pos);
+					$MeseData = getMese($SensoriUtente['StringaDati'], $pos);
+					$AnnoData = getAnno($SensoriUtente['StringaDati'], $pos);
+					$OraData = getOra($SensoriUtente['StringaDati'], $pos);
+					$MinutiData = getMinuti($SensoriUtente['StringaDati'], $pos);
+					$ValoreSensore = getValore($SensoriUtente['StringaDati'], $pos);
+					$Messaggio = getMessaggio($SensoriUtente['StringaDati'], $pos);
+				
 						
-						$StringaDati = mysql_result ($RisultatoSensori, $i, 'StringaDati');
-				
-						$TipoSensore = interrogazioneTipoSensore($StringaDati);
-						$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
-						$pos = findNewPos($StringaDati);
-						$GiornoData = getGiorno($StringaDati, $pos);
-						$MeseData = getMese($StringaDati, $pos);
-						$AnnoData = getAnno($StringaDati, $pos);
-						$OraData = getOra($StringaDati, $pos);
-						$MinutiData = getMinuti($StringaDati, $pos);
-						$ValoreSensore = getValore($StringaDati, $pos);
-						$Messaggio = getMessaggio($StringaDati, $pos);
-				
-						$contenuto[$i] = "     Stringa dati:  $StringaDati  
-										Tipo Sensore: $TipoSensore,  
-										Marca Sensore: $MarcaSensore,  
-										Data rilevazione: $GiornoData/$MeseData/$AnnoData,  	
-										Ora rilevazione: $OraData:$MinutiData,  
-										Misurazione: $ValoreSensore,  
-										$Messaggio"    ;
 										
 					}
 						
 					echo'<a href="mailto:InserisciEmail?
 					&subject=Dati%20sensori%20&
-					body=';for ($i=0; $i<$NumeroRigheSensori; $i++){echo 'Sensore numero'; echo $i+1;
+					body=';foreach ($RisultatoSensori as $SensoriUtente){echo 'Sensore numero'; echo $i+1;
 					echo $contenuto[$i];} echo'">
 					Invia Dati';
 								?>		
@@ -129,48 +120,45 @@ include '../../model/decodificaStringaSensori.php';
 			$ID = $_GET['idAmbiente'];
 			echo '<div class="row">';
 			
-			$RisultatoSensori = interrogazioneSensori($ID);
 			
-			$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
-			for ($i=0; $i<$NumeroRigheSensori; $i++){
-				
-				$StringaDati = mysql_result ($RisultatoSensori, $i, "StringaDati");
-				
-				$TipoSensore = interrogazioneTipoSensore($StringaDati);
-				$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
-				$pos = findNewPos($StringaDati);
-				$GiornoData = getGiorno($StringaDati, $pos);
-				$MeseData = getMese($StringaDati, $pos);
-				$AnnoData = getAnno($StringaDati, $pos);
-				$OraData = getOra($StringaDati, $pos);
-				$MinutiData = getMinuti($StringaDati, $pos);
-				$ValoreSensore = getValore($StringaDati, $pos);
-				$Messaggio = getMessaggio($StringaDati, $pos);
-				
-				
-	
-				echo '<div class="col-lg-6 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-dot-circle-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="nomeAmbiente">'; echo "$StringaDati"; echo'</div>
-                                    <div class="tipologiaAmbiente">'; echo "Tipo Sensore: $TipoSensore"; echo'</div>
-									<div class="tipologiaAmbiente">'; echo "Marca Sensore: $MarcaSensore"; echo'</div>
-									<div class="tipologiaAmbiente">'; echo "Data rilevazione: $GiornoData/$MeseData/$AnnoData "; echo'</div>	
-									<div class="tipologiaAmbiente">'; echo "Ora rilevazione: $OraData:$MinutiData"; echo'</div>
-									<div class="tipologiaAmbiente">'; echo "Misurazione: $ValoreSensore"; echo'</div>
-									<div class="tipologiaAmbiente">'; echo "$Messaggio"; echo'</div>
-                                </div>
-                            </div>
-                        </div>            
+			$RisultatoSensori = interrogazioneSensori($ID);
+
+     foreach ($RisultatoSensori as $SensoriUtente){
+
+            $TipoSensore = interrogazioneTipoSensore($SensoriUtente['StringaDati']);
+            $MarcaSensore = interrogazioneMarcaSensore($SensoriUtente['StringaDati']);
+            $pos = findNewPos($SensoriUtente['StringaDati']);
+            $GiornoData = getGiorno($SensoriUtente['StringaDati'], $pos);
+            $MeseData = getMese($SensoriUtente['StringaDati'], $pos);
+            $AnnoData = getAnno($SensoriUtente['StringaDati'], $pos);
+            $OraData = getOra($SensoriUtente['StringaDati'], $pos);
+            $MinutiData = getMinuti($SensoriUtente['StringaDati'], $pos);
+            $ValoreSensore = getValore($SensoriUtente['StringaDati'], $pos);
+            $Messaggio = getMessaggio($SensoriUtente['StringaDati'], $pos);
+
+
+            echo '<div class="col-lg-6 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-dot-circle-o fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="nomeAmbiente">'; echo $SensoriUtente['StringaDati']; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo "Tipo Sensore: $TipoSensore"; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo "Marca Sensore: $MarcaSensore"; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo "Data rilevazione: $GiornoData/$MeseData/$AnnoData "; echo'</div>	
+                            <div class="tipologiaAmbiente">'; echo "Ora rilevazione: $OraData:$MinutiData"; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo "Misurazione: $ValoreSensore"; echo'</div>
+                            <div class="tipologiaAmbiente">'; echo "$Messaggio"; echo'</div>
+                        </div>
                     </div>
-                </div>';
-			}
-			?>
+                </div>            
+            </div>
+        </div>';
+    }
+    ?>
     </div>
     
     <!-- jQuery -->
