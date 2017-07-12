@@ -2,9 +2,9 @@
 
 	$sensoreget = $_POST['IdSensore'];
 	
-	$pos = (string)strpos ("$sensoreget",'_');
+	//$pos = (string)strpos ("$sensoreget",'_');
 	  
-	$IdSensore = substr($sensoreget,0, $pos);
+	$IdSensore = substr($sensoreget,0, strpos ("$sensoreget",'_'));
 
 	$csrf = 'io';
 	$csrf1= 'io';
