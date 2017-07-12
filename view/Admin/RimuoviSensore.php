@@ -85,7 +85,9 @@
 															include '../../model/visualizzaSensori.php';
 															include '../../model/decodificaStringaSensori.php';
 
-															foreach ($RisultatoSensori1 as $SensoriAdmin) {
+															$RisultatoSensori = interrogazioneSensoriAdmin();
+
+															foreach ($RisultatoSensori as $SensoriAdmin) {
 
 																$StringaDati = $SensoriAdmin['StringaDati'];
 																$TipoSensore = interrogazioneTipoSensore($StringaDati);

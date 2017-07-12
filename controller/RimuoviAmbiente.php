@@ -2,7 +2,7 @@
 
 	$ambienteget = $_POST['IdAmbiente'];
 	  
-	$IdAmbiente = substr($ambienteget,0, (string)strpos ('$ambienteget','_'));
+	$IdAmbiente = substr($ambienteget,0, (string)strpos ("$ambienteget",'_'));
 
 	
 	$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');

@@ -4,7 +4,7 @@
 	
 	//$pos = (string)strpos ("$sensoreget",'_');
 	  
-	$IdSensore = substr($sensoreget,0, strpos ("$sensoreget",'_'));
+	$IdSensore = (string)substr($sensoreget,0, strpos ("$sensoreget",'_'));
 
 	$csrf = 'io';
 	$csrf1= 'io';

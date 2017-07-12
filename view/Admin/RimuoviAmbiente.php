@@ -84,6 +84,8 @@
 															<?php
 															include '../../model/visualizzaAmbienti.php';
 															
+															$RisultatoAmbientiAdmin = interrogazioneAmbientiAdmin();
+
 															foreach ($RisultatoAmbientiAdmin as $AmbientiAdmin) {
 																$list = '<option>' . $AmbientiAdmin['IdAmbiente'] . '_' . $AmbientiAdmin['NomeAmbiente'] . ' di ' . $AmbientiAdmin['Username'] . '</option>';
 																echo $list;

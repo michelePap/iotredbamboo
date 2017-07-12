@@ -101,7 +101,6 @@ session_start();
             $Data = htmlspecialchars("Data rilevazione: $GiornoData/$MeseData/$AnnoData ");
             $Ora = htmlspecialchars("Ora rilevazione: $OraData:$MinutiData");
             $Misura = htmlspecialchars("Misurazione: $ValoreSensore");
-            //$Msg = (string)htmlspecialchars("$Messaggio");
 
             $list = '<div class="col-lg-6 col-md-6">
             <div class="panel panel-primary">

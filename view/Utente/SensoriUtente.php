@@ -148,7 +148,6 @@ include '../../model/decodificaStringaSensori.php';
             $Data = htmlspecialchars("Data rilevazione: $GiornoData/$MeseData/$AnnoData ");
             $Ora = htmlspecialchars("Ora rilevazione: $OraData:$MinutiData");
             $Misura = htmlspecialchars("Misurazione: $ValoreSensore");
-            $Msg = (string)htmlspecialchars("$Messaggio");
 
             $list = '<div class="col-lg-6 col-md-6">
             <div class="panel panel-primary">
@@ -164,7 +163,7 @@ include '../../model/decodificaStringaSensori.php';
                             <div class="tipologiaAmbiente">' . $Data . '</div>   
                             <div class="tipologiaAmbiente">' . $Ora .'</div>
                             <div class="tipologiaAmbiente">' . $Misura . '</div>
-                            <div class="tipologiaAmbiente">' . $Msg . '</div>
+                            <div class="tipologiaAmbiente">' . $Messaggio . '</div>
                         </div>
                     </div>
                 </div>            

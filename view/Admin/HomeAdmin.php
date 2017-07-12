@@ -109,6 +109,7 @@
 						include '../../model/visualizzaAmbienti.php';
 						echo '<div class="row">';
 						
+						$RisultatoAmbientiAdmin = interrogazioneAmbientiAdmin();
 						
 						foreach ($RisultatoAmbientiAdmin as $AmbientiAdmin){
 
