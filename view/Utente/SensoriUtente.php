@@ -70,14 +70,19 @@ include '../../model/decodificaStringaSensori.php';
 					$ValoreSensore = getValore($SensoriUtente['StringaDati'], $pos);
 					$Messaggio = getMessaggio($SensoriUtente['StringaDati'], $pos);
 				
-						
+						$contenuto =" Stringa dati:  $SensoriUtente['StringaDati']  
+										Tipo Sensore: $TipoSensore,  
+										Marca Sensore: $MarcaSensore,  
+										Data rilevazione: $GiornoData/$MeseData/$AnnoData,  	
+										Ora rilevazione: $OraData:$MinutiData,  
+										Misurazione: $ValoreSensore,  
+										$Messaggio"    ;
 										
 					}
 						
 					echo'<a href="mailto:InserisciEmail?
 					&subject=Dati%20sensori%20&
-					body=';foreach ($RisultatoSensori as $SensoriUtente){echo 'Sensore numero'; echo $i+1;
-					echo $contenuto[$i];} echo'">
+					body=';foreach ($RisultatoSensori as $SensoriUtente){ } echo'">
 					Invia Dati';
 								?>		
 							<i class="fa fa-envelope fa-fw"></i><i class="fa fa-reply-forward"></i>
