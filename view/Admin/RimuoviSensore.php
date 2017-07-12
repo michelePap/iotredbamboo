@@ -84,22 +84,17 @@
 															<?php
 															include '../../model/visualizzaSensori.php';
 															include '../../model/decodificaStringaSensori.php';
-															
-															$NumeroRigheSensori1 = '';
-															$NumeroRigheSensori1 = mysql_num_rows($RisultatoSensori1);
-															for($i=0; $i<$NumeroRigheSensori1; $i++){
-																
-																
-																$StringaDati = mysql_result ($RisultatoSensori1, $i, 'StringaDati');
-																$IdSensore = mysql_result ($RisultatoSensori1, $i, 'IdSensori');
+
+															foreach ($RisultatoSensori1 as $SensoriAdmin) {
+
+																$StringaDati = $SensoriAdmin['StringaDati'];
 																$TipoSensore = interrogazioneTipoSensore($StringaDati);
 																$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
-																$NomeAmbiente = mysql_result ($RisultatoSensori1,$i,'NomeAmbiente');
-																
-				
-															echo '<option>'; echo $IdSensore; echo '_'; echo $MarcaSensore;
-															echo '_'; echo $TipoSensore; echo '_'; echo $NomeAmbiente; echo'</option>';
+
+    															echo "<option>" . $SensoriAdmin['IdSensori'] . "_" . $MarcaSensore
+    															 . "_" . $TipoSensore . "_" . $SensoriAdmin['NomeAmbiente'] . "</option>";
 															}
+															
 															?>
 												 </select>
 												</br>
