@@ -92,9 +92,9 @@
 																$MarcaSensore = interrogazioneMarcaSensore($StringaDati);
 																$Sensori = $SensoriAdmin['IdSensori'];
 																$NomeAmb = $SensoriAdmin['NomeAmbiente'];
-																$list = $Sensori. "_" .$MarcaSensore. "_" .$TipoSensore. "_" .$NomeAmb;
+																$list = htmlspecialchars($Sensori. "_" .$MarcaSensore. "_" .$TipoSensore. "_" .$NomeAmb);
 
-    															echo "<option>"; echo htmlspecialchars($list); echo "</option>";
+    															echo "<option>"; echo $list; echo "</option>";
 															}
 															
 															?>
