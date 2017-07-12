@@ -3,8 +3,7 @@
 	$Username = $_POST['Username'];
 	$Password = $_POST['Password'];
 	
-	$csrf3 = 'io';
-	$csrf4= 'io';
+
 	
 	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
 	

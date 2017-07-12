@@ -9,7 +9,7 @@
 	$csrf = 'io';
 	$csrf1= 'io';
 	
-		if (hash_equals($csrf,$csrf1)){
+		if ($csrf === $csrf1){
 			
 		$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
 

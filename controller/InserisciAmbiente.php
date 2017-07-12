@@ -4,9 +4,7 @@
 	$nomeAmbiente = $_POST['nomeAmbiente'];
 	$tipoAmbiente = $_POST['tipoAmbiente'];
 
-	
-	
-	
+
 	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
 	
 

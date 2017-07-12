@@ -6,8 +6,6 @@
 	  
 	$IdAmbiente = substr($ambienteget,0, (string)$pos);
 
-	$csrf5 = 'io';
-	$csrf6 = 'io';
 	
 	$dbh = new PDO("mysql:dbname=iotredbamboo;host=localhost", "root", "");
 	
