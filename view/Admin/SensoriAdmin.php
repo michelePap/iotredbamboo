@@ -101,10 +101,9 @@ session_start();
             $Data = htmlspecialchars("Data rilevazione: $GiornoData/$MeseData/$AnnoData ");
             $Ora = htmlspecialchars("Ora rilevazione: $OraData:$MinutiData");
             $Misura = htmlspecialchars("Misurazione: $ValoreSensore");
-            $Msg = htmlspecialchars("$Messaggio");
+            $Msg = (string)htmlspecialchars("$Messaggio");
 
-
-            echo '<div class="col-lg-6 col-md-6">
+            $list = '<div class="col-lg-6 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -112,18 +111,20 @@ session_start();
                             <i class="fa fa-dot-circle-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="nomeAmbiente">'; echo $Stringa; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo $Tipo; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo $Marca; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo $Data; echo'</div>	
-                            <div class="tipologiaAmbiente">'; echo $Ora; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo $Misura; echo'</div>
-                            <div class="tipologiaAmbiente">'; echo $Msg; echo'</div>
+                            <div class="nomeAmbiente">' . $Stringa . '</div>
+                            <div class="tipologiaAmbiente">' . $Tipo . '</div>
+                            <div class="tipologiaAmbiente">' . $Marca . '</div>
+                            <div class="tipologiaAmbiente">' . $Data . '</div>   
+                            <div class="tipologiaAmbiente">' . $Ora .'</div>
+                            <div class="tipologiaAmbiente">' . $Misura . '</div>
+                            <div class="tipologiaAmbiente">' . $Msg . '</div>
                         </div>
                     </div>
                 </div>            
             </div>
         </div>';
+
+            echo $list;
     }
     ?>
 

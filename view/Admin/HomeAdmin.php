@@ -111,8 +111,8 @@
 						
 						
 						foreach ($RisultatoAmbientiAdmin as $AmbientiAdmin){
-			
-							echo '<div class="col-lg-3 col-md-6">
+
+							$list = '<div class="col-lg-3 col-md-6">
 							<div class="panel panel-primary">
 								<div class="panel-heading">
 									<div class="row">
@@ -120,20 +120,22 @@
 											<i class="fa fa-industry fa-5x"></i>
 										</div>
 										<div class="col-xs-9 text-right">
-											<div class="nomeAmbiente">'; echo $AmbientiAdmin['NomeAmbiente']; echo'</div>
-											<div class="tipologiaAmbiente">'; echo $AmbientiAdmin['TipologiaAmbiente']; echo'</div>
-											<div class="tipologiaAmbiente">'; echo $AmbientiAdmin['Username']; echo'</div>
+											<div class="nomeAmbiente">' . $AmbientiAdmin['NomeAmbiente'] . '</div>
+											<div class="tipologiaAmbiente">' . $AmbientiAdmin['TipologiaAmbiente'] . '</div>
+											<div class="tipologiaAmbiente">' . $AmbientiAdmin['Username'] . '</div>
 										</div>
 									</div>
 								</div>            
 								<div class="panel-footer">
-									<a href="SensoriAdmin.php?idAmbiente=';echo $AmbientiAdmin['IdAmbiente']; echo '">Visualizza dati sensori</a>
+									<a href="SensoriAdmin.php?idAmbiente=' . $AmbientiAdmin['IdAmbiente'] . '">Visualizza dati sensori</a>
 									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
 						</div>
 					</div>';
+			
+							echo $list;
 							
 				}
 				?>
