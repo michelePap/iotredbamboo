@@ -57,8 +57,10 @@ include '../../model/decodificaStringaSensori.php';
 					$RisultatoSensori = '';
 					$RisultatoSensori = interrogazioneSensori($ID);
 
+					$i=0;
+				
 					 foreach ($RisultatoSensori as $SensoriUtente){
-
+					
 					$TipoSensore = interrogazioneTipoSensore($SensoriUtente['StringaDati']);
 					$MarcaSensore = interrogazioneMarcaSensore($SensoriUtente['StringaDati']);
 					$pos = findNewPos($SensoriUtente['StringaDati']);
@@ -69,20 +71,23 @@ include '../../model/decodificaStringaSensori.php';
 					$MinutiData = getMinuti($SensoriUtente['StringaDati'], $pos);
 					$ValoreSensore = getValore($SensoriUtente['StringaDati'], $pos);
 					$Messaggio = getMessaggio($SensoriUtente['StringaDati'], $pos);
-				
-					/**$contenuto =" Stringa dati:  $SensoriUtente['StringaDati']  
-										Tipo Sensore: $TipoSensore,  
-										Marca Sensore: $MarcaSensore,  
-										Data rilevazione: $GiornoData/$MeseData/$AnnoData,  	
-										Ora rilevazione: $OraData:$MinutiData,  
-										Misurazione: $ValoreSensore,  
-										$Messaggio"    ;*/
-										
+					$Stringa = $SensoriUtente['StringaDati'];
+					
+					$i++;
+					
+					$contenuto[$i] = "Stringa dati: $Stringa
+					Tipo Sensore: $TipoSensore,
+					Marca Sensore: $MarcaSensore,
+					Data rilevazione: $GiornoData/$MeseData/$AnnoData,
+					Ora rilevazione: $OraData:$MinutiData,
+					Misurazione: $ValoreSensore,$Messaggio"    ;
+						
+								
 					}
 						
 					echo'<a href="mailto:InserisciEmail?
 					&subject=Dati%20sensori%20&
-					body=';foreach ($RisultatoSensori as $SensoriUtente){ } echo'">
+					body='; $i=1;foreach ($RisultatoSensori as $SensoriUtente){echo $contenuto[$i]; $i++;}echo'">
 					Invia Dati';
 								?>		
 							<i class="fa fa-envelope fa-fw"></i><i class="fa fa-reply-forward"></i>
