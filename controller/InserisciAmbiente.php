@@ -8,7 +8,7 @@
 	$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
 	
 
-		if (hash_equals($token, $verifica)){
+		if (hash_equals($CsrfToken, $verifica)){
 		$stmt = $dbh->prepare( 'INSERT INTO `ambienti` (`IdAmbiente`, `NomeAmbiente`, `TipologiaAmbiente`, `Username`)
 	VALUES (NULL, :nomeAmbiente, :tipoAmbiente, :username)');
 		$stmt->bindParam(':nomeAmbiente', $nomeAmbiente);
@@ -16,7 +16,7 @@
 		$stmt->bindParam(':username', $username);
 		$stmt->execute();
 		} else {
-			$str = 'token non verificato'
+			$str = 'token non verificato';
 			echo $str;
 		}
 	

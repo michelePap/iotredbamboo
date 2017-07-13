@@ -9,12 +9,12 @@
 	$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
 	
 
-		if (hash_equals($token, $verifica)){
+		if (hash_equals($CsrfToken, $verifica)){
 		$stmt = $dbh->prepare( 'DELETE FROM `ambienti` WHERE `ambienti`.`IdAmbiente` = :IdAmbiente');
 		$stmt->bindParam(':IdAmbiente', $IdAmbiente);
 		$stmt->execute();
 		} else {
-		$str = 'token non verificato'
+		$str = 'token non verificato';
 		echo $str;
 		}
 
