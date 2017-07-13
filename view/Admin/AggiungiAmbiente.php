@@ -135,6 +135,7 @@
 							<div class="row">
                                 <div class="col-xs-12 text-right">
 									<div class="form-group">
+										<input type="hidden" value="token" name="CsrfToken">
                                         <button type="submit" class="btn btn-default">Aggiungi Dati</button>
                                         <button type="reset" class="btn btn-default">Resetta</button>
                                         </div>

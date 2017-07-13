@@ -147,6 +147,7 @@
               }
               ?>
             </select>
+             <input type="hidden" value="token" name="CsrfToken">
           </div>
         </div>
 
