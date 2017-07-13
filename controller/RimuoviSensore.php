@@ -1,13 +1,12 @@
 <?php
 
 	$sensoreget = $_POST['IdSensore'];
-	
+	$CsrfToken = $_POST['CsrfToken']
 	//$pos = (string)strpos ("$sensoreget",'_');
 	  
 	$IdSensore = (string)substr($sensoreget,0, strpos ("$sensoreget",'_'));
 
-	$token = 'io';
-	$verifica= 'io';
+	$verifica= 'token';
 	
 		
 		
