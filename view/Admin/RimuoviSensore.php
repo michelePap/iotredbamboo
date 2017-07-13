@@ -95,7 +95,7 @@
 																$Sensori = $SensoriAdmin['IdSensori'];
 																$NomeAmb = $SensoriAdmin['NomeAmbiente'];
 
-																$list = '<option>' . $Sensori. '_' .$MarcaSensore. '_' .$TipoSensore. '_' .$NomeAmb . '</option>';
+																$list = '<option>' . htmlspecialchars($Sensori) . '_' . htmlspecialchars($MarcaSensore) . '_' . htmlspecialchars($TipoSensore) . '_' . htmlspecialchars($NomeAmb) . '</option>';
 																echo $list;
 															}
 															
