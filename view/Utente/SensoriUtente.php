@@ -54,7 +54,7 @@ include '../../model/decodificaStringaSensori.php';
 				<li class="dropdown">
 					<?php
 					
-					
+					$RisultatoSensori = '';
 					$RisultatoSensori = interrogazioneSensori($ID);
 
 					 foreach ($RisultatoSensori as $SensoriUtente){

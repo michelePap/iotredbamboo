@@ -2,7 +2,6 @@
 	
 	function findNewPos($Stringa){
 		$pos = strpos ('$Stringa','_');
-		$defaultPos = 9;
 		return $pos;
 	}
 

@@ -74,8 +74,8 @@ session_start();
         <!-- /.row -->
         <?php
 
-        include ('../../model/visualizzaSensori.php');
-        include ('../../model/decodificaStringaSensori.php');
+        include '../../model/visualizzaSensori.php';
+        include '../../model/decodificaStringaSensori.php';
 
         $ID = $_GET['idAmbiente'];
         echo '<div class="row">';

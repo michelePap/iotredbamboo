@@ -115,7 +115,7 @@
                    <select class="form-control" name="TipoSensori">
                     <?php
                     include '../../model/visualizzaTipoSensori.php';
-
+                        $TipoSensori = '';
                     foreach ($RisultatoTipoSensori as $TipoSensori){
                      $IdTipo = $TipoSensori['IdTipo'];
                      $NomeTipo = $TipoSensori['NomeTipo'];
@@ -136,7 +136,8 @@
              <select class="form-control" name="MarcaSensori">
               <?php
               include '../../model/visualizzaMarcaSensori.php';
-
+                
+                $MarcaSensori = '';
               foreach ($RisultatoMarcaSensori as $MarcaSensori){
 
                 $IdMarca = $MarcaSensori['IdMarca'];

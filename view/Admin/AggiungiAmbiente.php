@@ -88,6 +88,7 @@
 												<?php
 												include '../../model/visualizzaClienti.php';
 												
+												$clienti = '';
                                               foreach($RisultatoClienti as $clienti){
 												
 													$utente = '';
