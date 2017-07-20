@@ -1,8 +1,9 @@
 <?php
 	
 	function findNewPos($Stringa){
-		$pos = strpos ('$Stringa','_');
-		return $pos;
+		$pos = strpos ($Stringa,'_');
+		$defaultPos = 7;
+		return $pos - $defaultPos;
 	}
 
 	 function getTipo($Stringa){
@@ -75,5 +76,34 @@
 	 function getMessaggio($Stringa, $pos){
 		$MessaggioSensore = substr ($Stringa, 24 + $pos);
 		return $MessaggioSensore;
+	 }
+
+	 function getStatoSensori($ID){
+
+	 	$Risultato = interrogazioneSensori($ID);
+	 	$statoSensori = ['errore' => 0, 'attesa' => 0, 'ok' => 0];
+	 	foreach ($Risultato as $Sensori){
+
+	 		$Stringa = $Sensori['StringaDati'];
+	 		$pos = findNewPos($Sensori['StringaDati']);
+	 		$messaggio = getMessaggio($Stringa, $pos);
+
+	 		if($messaggio == 'errore'){
+
+	 			$statoSensori['errore']++;
+
+	 		} else if($messaggio == 'in attesa di installazione'){
+
+	 			$statoSensori['attesa']++;
+
+	 		} else{
+
+	 			$statoSensori['ok']++;
+
+	 		}
+
+	 	}
+	 	return $statoSensori;
+
 	 }
 

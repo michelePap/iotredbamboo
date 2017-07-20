@@ -44,7 +44,7 @@ include '../../model/decodificaStringaSensori.php';
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">IoT RED BAMBOO SOFTWARE</a>
+                <a class="navbar-brand" href="HomeUtente.php">IoT RED BAMBOO SOFTWARE</a>
             </div>
             <!-- /.navbar-header -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -93,7 +93,17 @@ include '../../model/decodificaStringaSensori.php';
 							<i class="fa fa-envelope fa-fw"></i><i class="fa fa-reply-forward"></i>
 						</a>
 					</li>
-					
+				
+                <li class="dropdown">
+                        <?php
+                            $menu = '<a  href="../../view/Dashboard.php?idAmbiente='. $_GET['idAmbiente'] .
+                            '"> Dashboard  
+                                <i class="fa fa-bar-chart"></i>
+                            </a>';
+                            echo $menu;
+                        ?>
+                    </li>
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>

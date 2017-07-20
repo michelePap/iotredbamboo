@@ -15,18 +15,18 @@ $ID = substr($IdAmbiente, START_POINT, CHAR_SING);
 $Marca = substr($MarcaSensori, START_POINT, CHAR_LENG);
 $Tipo = substr($TipoSensori, START_POINT, CHAR_LENG);
 
-$interrogazioneSensori = 'SELECT * FROM `sensori`';
+if (hash_equals($CsrfToken, $verifica)){
+$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
 
-$RisultatoSensori = mysql_query($interrogazioneSensori);
+$countSensori = $dbh->prepare('SELECT COUNT(*) AS `NumeroSensori` FROM `sensori`');
+$countSensori->execute();
 
-$NumeroRigheSensori = mysql_num_rows($RisultatoSensori);
+$Risultato = $countSensori->fetch(PDO::FETCH_NUM);
+$NumeroRigheSensori = $Risultato[0] + 1;
 
 $strDefault = '_000000000000000_in attesa di installazione';
 
 $stringaDati = $Tipo.$Marca.$NumeroRigheSensori.$strDefault;
-
-if (hash_equals($CsrfToken, $verifica)){
-$dbh = new PDO('mysql:dbname=iotredbamboo;host=localhost', 'root', '');
 
 $stmt = $dbh->prepare( 'INSERT INTO `sensori` (`IdSensori`, `StringaDati`, `IdAmbiente`) VALUES (NULL, :stringaDati, :ID)');
 $stmt->bindParam(':stringaDati', $stringaDati);
